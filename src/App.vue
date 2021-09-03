@@ -45,6 +45,7 @@
 	import axios from "axios";
 	export default {
 		name: "App",
+		baseURL:"https://hoanghai-shop-be.herokuapp.com",
 		//props:['products'],
 		data: function() {
 			return {
@@ -71,7 +72,7 @@
 				this.isLoading = true
 				this.products = [{}, {}, {}];
 				
-				await axios.get("http://localhost:3000/products").then((res) => {
+				await axios.get(baseURL + "/products").then((res) => {
 					this.products = res.data;
 				});
 
@@ -90,7 +91,7 @@
 				if (event.target.value === "price") {
 					await axios
 						.get(
-							`http://localhost:3000/products?_sort=${event.target.value}&_order=DESC`
+							baseURL+`/products?_sort=${event.target.value}&_order=DESC`
 						)
 						.then((res) => {
 							this.products = res.data;
@@ -98,7 +99,7 @@
 				} else {
 					await axios
 						.get(
-							`http://localhost:3000/products?_sort=name&_order=${event.target.value}`
+							baseURL+`/products?_sort=name&_order=${event.target.value}`
 						)
 						.then((res) => (this.products = res.data));
 				}
@@ -110,7 +111,7 @@
 			this.isLoading = true;
 			//pull new data product
 			await axios
-				.get("http://localhost:3000/products")
+				.get(baseURL+"/products")
 				.then((res) => {
 					this.products = res.data;
 					console.log(this.products);

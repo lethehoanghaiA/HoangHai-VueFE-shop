@@ -56,6 +56,7 @@
 	import axios from "axios";
 	export default {
 		name: "Form",
+		baseURL:"https://hoanghai-shop-be.herokuapp.com",
 		//props: ['code'],
 		data() {
 			return {
@@ -100,7 +101,7 @@
 				this.isWaitingRes = true;
 				let dataSend = { customer: this.customer, cart: this.cart, code: this.code };
 				await axios
-					.post("http://localhost:3000/submitOrder", dataSend)
+					.post(baseURL+"/submitOrder", dataSend)
 					.then((res) => (this.messageFromServer = res.data)); 
 				this.isWaitingRes = false;
 				this.cart = null;
