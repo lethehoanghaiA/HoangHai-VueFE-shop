@@ -14,7 +14,7 @@
 			<div class="card" v-else>
 				<div class="card-body">
 					<div class="card-img-actions ">
-						<img v-bind:src="product.image" class="card-img img-fluid" alt="" />
+						<img v-bind:src="product.img" class="card-img img-fluid" alt="" />
 					</div>
 				</div>
 				<div class="card-body bg-light text-center">
