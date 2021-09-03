@@ -3,7 +3,6 @@ import Home from "../components/Home.vue";
 import Cart from "../components/ShoppingCart.vue";
 import ConfirmForm from "../components/Form.vue";
 
-
 const routes = [
   {
     path: '/',
@@ -13,7 +12,7 @@ const routes = [
   },
   {
     path: '/formCofirmOrder',
-    name: 'Form',
+    name: 'ConfirmForm',
     component: ConfirmForm,
     props: true,
   },
@@ -29,7 +28,8 @@ const routes = [
 ]
 
 const router = createRouter({
-  history: history.pushState,
+  history: createWebHistory(),
+  //history: history.pushState,
   routes
 })
 
