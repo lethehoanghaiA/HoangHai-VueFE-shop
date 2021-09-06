@@ -86,24 +86,31 @@
 			},
 
 			async sorting(event) {
-				this.isLoading = true
-				this.products = [{}, {}, {}];
-				if (event.target.value === "price") {
-					await axios
-						.get(
-							this.baseURL+`/products?_sort=${event.target.value}&_order=DESC`
-						)
-						.then((res) => {
-							this.products = res.data;
-						});
+				// this.isLoading = true
+				// this.products = [{}, {}, {}];
+				// if (event.target.value === "price") {
+				// 	await axios
+				// 		.get(
+				// 			this.baseURL+`/products?_sort=${event.target.value}&_order=DESC`
+				// 		)
+				// 		.then((res) => {
+				// 			this.products = res.data;
+				// 		});
+				// } else {
+				// 	await axios
+				// 		.get(
+				// 			this.baseURL+`/products?_sort=name&_order=${event.target.value}`
+				// 		)
+				// 		.then((res) => (this.products = res.data));
+				// }
+				// this.isLoading = false
+				if(event.target.value === "price") {
+					this.products = this.products.sort((p1, p2) => p1.price - p2.price) 
+				} else if (event.target.value === "asc") {
+					this.products = this.products.sort( p => p.name);
 				} else {
-					await axios
-						.get(
-							this.baseURL+`/products?_sort=name&_order=${event.target.value}`
-						)
-						.then((res) => (this.products = res.data));
+					this.products = this.products.sort( p => p.name).reverse();
 				}
-				this.isLoading = false
 			},
 		},
 
